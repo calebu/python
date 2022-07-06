@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+import sys, json
+
+print (len(sys.argv))
+print (sys.argv[1])
+if len(sys.argv) > 1 and sys.argv[1] == 'sample':
+	print("Hi")
+f = open("tester.txt", "a")
+f.write("[]")
+f.close()
+
+f = open("tester.txt", "r")
+content = f.read()
+obj = json.loads(content)
+dict = {"name" : "one"}
+obj.append(dict)
+dict = {"name" : "two"}
+obj.append(dict)
+dict = {"name" : "three"}
+obj.append(dict)
+dict = {"name" : "four"}
+obj.append(dict)
+obj = json.dumps(obj, indent = 2)
+print(obj)
