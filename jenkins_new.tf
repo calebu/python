@@ -7,12 +7,6 @@ terraform {
     }
 }
 
-provider "aws" {
-  access_key = ${{ secrets.AWS_ACCESS_KEY }}
-  secret_key = ${{ secrets.AWS_SECRET_KEY }}
-  region     = "us-east-1"
-}
-
 variable "db_password" { type= string } 
 
 resource "aws_security_group" "aws_sg" {
