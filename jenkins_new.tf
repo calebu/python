@@ -93,17 +93,6 @@ jenkins:
         value: foo
       - key: VARIABLE2
         value: bar
-credentials:
-  system:
-    domainCredentials:
-      - credentials:
-          - usernamePassword:
-              scope: SYSTEM
-              id: "username"
-              username: "new-user"
-              password: "ZdR6Tn*k(P@55W0rd]"
-              description: "Username/Password Credentials for some-user"
-
 EOL
 sudo chown jenkins:jenkins /var/lib/jenkins/jcasc.yaml
 sudo sed -i "s/# Arbitrary additional arguments to pass to Jenkins./Environment=\"JAVA_OPTS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dcasc.jenkins.config=\/var\/lib\/jenkins\/jcasc.yaml\"/" /usr/lib/systemd/system/jenkins.service
