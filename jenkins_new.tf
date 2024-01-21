@@ -109,4 +109,3 @@ EOF
 output "jenkins-instance_id" {
   value = aws_instance.Jenkins-Server.id
 }
-
