@@ -4,6 +4,8 @@ phases:
   install:
     commands:
       - npm install
+      - echo "Test"
+      
   build:
     commands:
       - npm test
