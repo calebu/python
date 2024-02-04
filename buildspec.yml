@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo && sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo && sudo yum install -y apache-maven && mvn --version
-      - git clone https://github.com/in28minutes/spring-boot-examples.git && cd spring-boot-examples/spring-boot-web-application && mvn build && ls && docker --version
+      - git clone https://github.com/in28minutes/spring-boot-examples.git && cd spring-boot-examples/spring-boot-web-application && mvn install && ls && docker --version
       - echo "Test"
       
   build:
