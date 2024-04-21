@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# Play with json module
+# Writes json to an output file tester.txt
 
 import sys, json
 
