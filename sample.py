@@ -25,3 +25,5 @@ dict = {"name" : "four"}
 obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 print(obj)
+
+logger.info(f"{test}")
