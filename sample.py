@@ -28,3 +28,4 @@ print(obj)
 
 logger.info(f"{test}")
 logger.info(f"{test}")
+logger.info(f"{test}")
