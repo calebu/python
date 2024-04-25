@@ -1,16 +1,16 @@
-name: Scheduled run
+name: Run-Daily
+
 on:
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '* * * * *'
+
 jobs:
-  build:
+  run-script:
     runs-on: ubuntu-latest
-    env:
-        TF_VAR_db_password: Earthly
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
     steps:
-      - name: Test
-        id: test
-        run: echo "Test" && ls -l
-        shell: bash
+    - name: Checkout
+      uses: actions/checkout@v2 
+    - name: Run Script
+      run: |
+        echo "Testing"
+        ls -l
