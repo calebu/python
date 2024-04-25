@@ -1,0 +1,16 @@
+name: Commit date to master
+on:
+  schedule:
+    - cron: '2 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        TF_VAR_db_password: Earthly
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+    steps:
+      - name: Test
+        id: test
+        run: echo "Test" && ls -l
+        shell: bash
