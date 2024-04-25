@@ -1,4 +1,4 @@
-name: Commit date to master
+name: Scheduled run
 on:
   schedule:
     - cron: '2 * * * *'
