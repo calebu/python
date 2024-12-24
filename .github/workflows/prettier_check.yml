@@ -9,5 +9,5 @@ jobs:
         
       - name: Docker pull
         id: docker
-        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > output.txt 2>&1 || cat output.txt && echo "${{ github.event.pull_request }}"
+        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > output.txt 2>&1 || cat output.txt && echo "${{ github.event.pull_request }}" 
         continue-on-error: true
