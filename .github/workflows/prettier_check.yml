@@ -1,5 +1,5 @@
 name: Prettier code formatting check
-on: commit
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
