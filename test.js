@@ -1,1 +1,1 @@
-console.log('Hello World!');
+const variable = { name: "caleb", age: 39 };
