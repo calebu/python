@@ -9,4 +9,4 @@ jobs:
         
       - name: Docker pull
         id: docker
-        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && python prettier_check.py $(docker run --rm -v $(pwd):/work tmknom/prettier --check *.js)
+        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check *.js >> pp.txt && cat pp.txt
