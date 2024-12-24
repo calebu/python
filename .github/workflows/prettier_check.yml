@@ -9,4 +9,4 @@ jobs:
         
       - name: Docker pull
         id: docker
-        run: ls && docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --write test.js && cat test.js
+        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --write test.js && docker run --rm -v $(pwd):/work tmknom/prettier --check test.js 
