@@ -9,5 +9,5 @@ jobs:
         
       - name: Docker pull
         id: docker
-        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > all.txt && echo 'Here' && cat all.txt
+        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > /work/all.txt && echo 'Here' && cat all.txt
         continue-on-error: true
