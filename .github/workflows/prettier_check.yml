@@ -1,0 +1,12 @@
+name: Prettier code formatting check
+on: commit
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Docker pull
+        id: docker
+        run: ls && docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test.js
