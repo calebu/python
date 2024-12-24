@@ -1,5 +1,5 @@
 name: Prettier code formatting check
-on: push
+on: pull_request
 jobs:
   build:
     runs-on: ubuntu-latest
