@@ -1,7 +1,7 @@
 name: Prettier code formatting check
-on: push
+on: pull_request
 jobs:
-  build:
+  prettier_test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -9,5 +9,5 @@ jobs:
         
       - name: Docker pull
         id: docker
-        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > output.txt 2>&1 || cat output.txt && echo "${{ github.event.pull_request.user.login }}"
-        continue-on-error: true
+        run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > output.txt 2>&1 || cat output.txt && echo "${{ toJSON(github.event.pull_request) }}" && return 0
+        #continue-on-error: true

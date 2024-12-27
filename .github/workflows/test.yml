@@ -1,5 +1,5 @@
 name: Commit date to master
-on: pull_request
+on: gollum
 jobs:
   build:
     runs-on: ubuntu-latest
