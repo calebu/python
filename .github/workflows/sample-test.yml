@@ -1,5 +1,5 @@
 name: build-test-deploy
-on: gollum   #a wiki based on github.. just testing
+on: gollum  #a wiki based on github.. just testing
 jobs: 
   build:
     runs-on: ubuntu-latest
