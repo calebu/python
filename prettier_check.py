@@ -16,8 +16,7 @@ date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
 
 message_text = "Hello\nThis is a mail from your server\n\nBye\n"
 
-msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" 
-        % ( from_addr, to_addr, subj, date, message_text )
+msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" % ( from_addr, to_addr, subj, date, message_text )
 
 files =  ' '.join(sys.argv[1:]).split(' ')
 subprocess.call("docker pull ghcr.io/tmknom/dockerfiles/prettier", shell=True)
