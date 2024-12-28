@@ -6,6 +6,6 @@ for file in files:
     res = subprocess.call(f"docker run --rm -v $(pwd):/work tmknom/prettier --check {file} --parser typescript > output.txt 2>&1", shell=True)
     str = open('output.txt', 'r').read()
     if "[warn]" in str or "[error]" in str:
-        return 1
+        sys.exit(f"File {file} failed the format check")
     
     
