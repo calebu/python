@@ -1,1 +1,1 @@
-const variable = {name:"caleb",age: 0.5};
+const variable = { name: "caleb", age: 0.5 };
