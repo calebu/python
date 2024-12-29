@@ -7,7 +7,7 @@ debuglevel = 0
 smtp = SMTP()
 smtp.set_debuglevel(debuglevel)
 smtp.connect('smtp.gmail.com', 587)
-smtp.login('naija.techie.2018@gmail.com', 'NMRC$$2kay')
+smtp.login('naija.techie.2018@gmail.com', '')
 
 from_addr = "Caleb Adeyemi <calebadeyemi@gmail.com>"
 to_addr = "naija.techie.2018@gmail.com"
