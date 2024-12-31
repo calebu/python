@@ -1,4 +1,32 @@
-import sys
-print("\nArguments passed:", end = " ")
-for i in range(0, len(sys.argv)):
-    print(sys.argv[i], end = " ")
+import sys, subprocess
+import datetime
+from smtplib import SMTP
+
+debuglevel = 0
+
+smtp = SMTP()
+smtp.set_debuglevel(debuglevel)
+smtp.connect('smtp.gmail.com', 587)
+smtp.login('<email>', '<password>')
+
+from_addr = "<email>"
+to_addr = "<email>"
+
+subj = "hello"
+date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
+
+message_text = "Hello\nThis is a mail from your server\n\nBye\n"
+
+msg = "From: %s\nTo: %s\nSubject: %s\nDate: %s\n\n%s" % ( from_addr, to_addr, subj, date, message_text )
+
+files =  ' '.join(sys.argv[1:]).split(' ')
+subprocess.call("docker pull ghcr.io/tmknom/dockerfiles/prettier", shell=True)
+for file in files:
+    res = subprocess.call(f"docker run --rm -v $(pwd):/work tmknom/prettier --check {file} --parser typescript > output.txt 2>&1", shell=True)
+    str = open('output.txt', 'r').read()
+    if "[warn]" in str or "[error]" in str:
+        smtp.sendmail(from_addr, to_addr, msg)
+        smtp.quit()
+        sys.exit(f"File {file} failed the format check")
+    
+    
