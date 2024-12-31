@@ -7,10 +7,10 @@ debuglevel = 0
 smtp = SMTP()
 smtp.set_debuglevel(debuglevel)
 smtp.connect('smtp.gmail.com', 587)
-smtp.login('naija.techie.2018@gmail.com', '')
+smtp.login('<email>', '<password>')
 
-from_addr = "Caleb Adeyemi <calebadeyemi@gmail.com>"
-to_addr = "naija.techie.2018@gmail.com"
+from_addr = "<email>"
+to_addr = "<email>"
 
 subj = "hello"
 date = datetime.datetime.now().strftime( "%d/%m/%Y %H:%M" )
