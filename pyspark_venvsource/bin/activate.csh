@@ -8,28 +8,16 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/pyspark_venvsource"
+setenv VIRTUAL_ENV /opt/Python-3.7.0/pyspark_venvsource
 
 set _OLD_VIRTUAL_PATH="$PATH"
-setenv PATH "$VIRTUAL_ENV/bin:$PATH"
+setenv PATH "$VIRTUAL_ENV/"bin":$PATH"
 
 
 set _OLD_VIRTUAL_PROMPT="$prompt"
 
 if (! "$?VIRTUAL_ENV_DISABLE_PROMPT") then
-    if ("pyspark_venvsource" != "") then
-        set env_name = "pyspark_venvsource"
-    else
-        if (`basename "VIRTUAL_ENV"` == "__") then
-            # special case for Aspen magic directories
-            # see http://www.zetadev.com/software/aspen/
-            set env_name = `basename \`dirname "$VIRTUAL_ENV"\``
-        else
-            set env_name = `basename "$VIRTUAL_ENV"`
-        endif
-    endif
-    set prompt = "[$env_name] $prompt"
-    unset env_name
+    set prompt = '(pyspark_venvsource) '"$prompt"
 endif
 
 alias pydoc python -m pydoc
