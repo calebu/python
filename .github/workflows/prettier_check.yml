@@ -1,5 +1,5 @@
 name: Prettier code formatting check
-on: pull_request
+on: [pull_request, workflow_dispatch]
 jobs:
   prettier_test:
     runs-on: ubuntu-latest
