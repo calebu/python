@@ -1,9 +1,10 @@
-name: Prettier code formatting check
-on:
-  workflow_dispatch:
-    inputs:
-      dryRun:
-        description: 'Run without making changes'
-        required: true
-        type: 'boolean'
-        default: 'false'
+name: 'My Custom Action'
+description: 'Performs an action with inputs'
+inputs:
+  myInput:
+    description: 'A custom input'
+    required: true
+    default: 'default value'
+runs:
+  using: 'node12'
+  main: 'index.js'
