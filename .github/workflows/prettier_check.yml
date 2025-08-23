@@ -1,32 +1,28 @@
-name: 'My Custom Action'
-on:
-  [pull_request, workflow_dispatch]:
-    inputs:
-      environment:
-        description: 'The deployment environment'
-        required: true
-        type: choice
-        options:
-          - dev
-          - staging
-          - prod
-        default: 'dev'
-      build_id:
-        description: 'The ID of the build to deploy'
-        required: false
-        type: string
-      deploy_to_production:
-        description: 'Deploy to production?'
-        required: false
-        type: boolean
-        default: false
+name: Prettier code formatting check
+on: [pull_request, workflow_dispatch]
+  inputs:
+    environment:
+      description: 'Deployment environment (e.g., staging, production)'
+      required: true
+      default: 'staging'
+    version:
+      description: 'Application version to deploy'
+      required: false
+      type: string
+    should_run_tests:
+      description: 'Run tests before deployment?'
+      required: false
+      type: boolean
+      default: false
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to environment
-        run: |
-          echo "Deploying to ${{ github.event.inputs.environment }}"
-          if ${{ github.event.inputs.deploy_to_production == true }}; then
-            echo "Performing production deployment for build ID: ${{ github.event.inputs.build_id }}"
-          fi
+  prettier_test:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+    uses: actions/checkout@v3
+    
+    - name: Docker pull
+    id: docker
+    #run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test1.js > output.txt 2>&1 || cat output.txt && echo "${{ toJSON(github.event.pull_request) }}" && return 0
+    run: docker pull ghcr.io/tmknom/dockerfiles/prettier && docker run --rm -v $(pwd):/work tmknom/prettier --check test.js --parser typescript
+    #continue-on-error: true 
