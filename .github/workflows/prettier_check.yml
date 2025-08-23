@@ -1,8 +1,11 @@
 name: Prettier code formatting check
-on: [pull_request, workflow_dispatch]
-inputs:
-  environment:
-  required: true
+on: 
+  workflow_dispatch
+    inputs:
+      environment:
+      description: 'Deployment environment (e.g., staging, production)'
+      required: true
+      default: 'staging'
 jobs:
   prettier_test:
     runs-on: ubuntu-latest
