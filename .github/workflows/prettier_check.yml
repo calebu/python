@@ -1,5 +1,19 @@
 name: Prettier code formatting check
 on: [pull_request, workflow_dispatch]
+    inputs:
+      environment:
+        description: 'Deployment environment (e.g., staging, production)'
+        required: true
+        default: 'staging'
+      version:
+        description: 'Application version to deploy'
+        required: false
+        type: string
+      should_run_tests:
+        description: 'Run tests before deployment?'
+        required: false
+        type: boolean
+        default: false
 jobs:
   prettier_test:
     runs-on: ubuntu-latest
