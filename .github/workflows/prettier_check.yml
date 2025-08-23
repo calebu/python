@@ -1,5 +1,8 @@
 name: Prettier code formatting check
 on: [pull_request, workflow_dispatch]
+  inputs:
+    environment:
+      required: true
 jobs:
   prettier_test:
     runs-on: ubuntu-latest
