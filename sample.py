@@ -6,8 +6,19 @@ import sys, json, logging, yaml
 
 logger = logging.getLogger(__name__)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
-	print("<html><body><h3>Changes to be made</h3><table><tr><td>Repo</td><td>Branch</td><td>Change</td></tr><tr><td>Repo 1</td><td>Main</td><td>++ line added</td></tr></table></body></html>")
-	exit()
+    my_string = """
+<html>
+	<body>
+ 		<h3>Changes to be made</h3>
+   		<table>
+     		<tr><td>Repo</td><td>Branch</td><td>Change</td></tr>
+       		<tr><td>Main Repo</td><td>Main</td><td><ul><li>++ line added<li>-- line removed</ul></td></tr>
+         </table>
+    </body>
+</html>
+"""
+    print("")
+    exit()
 #print (len(sys.argv[1]))
 #print (f"From python code: {sys.argv[1]}")
 
