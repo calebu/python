@@ -2,11 +2,17 @@
 # Play with json module
 # Writes json to an output file tester.txt
 
-import sys, json, logging
+import sys, json, logging, yaml
 
 logger = logging.getLogger(__name__)
 print (len(sys.argv))
 print (f"From python code: {sys.argv[1]}")
+
+with open('test.yml', 'r') as file:
+    config = yaml.safe_load(file)
+
+print(config)
+
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
 	print("<html><body><h3>Changes to be made</h3><table><tr><td>Repo</td><td>Branch</td><td>Change</td></tr><tr><td>Repo 1</td><td>Main</td><td>++ line added</td></tr></table></body></html>")
 	exit()
