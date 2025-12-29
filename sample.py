@@ -17,7 +17,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     </body>
 </html>
 """
-    print("")
+    print(my_string)
     exit()
 #print (len(sys.argv[1]))
 #print (f"From python code: {sys.argv[1]}")
