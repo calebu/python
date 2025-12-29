@@ -1,4 +1,4 @@
-name: auto-comment-on-pr
+name: check-for-pr-comments
 on:
   issue_comment:
     types: [created, edited] # Trigger for new or edited comments
@@ -6,6 +6,11 @@ jobs:
   auto-comment:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: main
+        path: main
     - name: Check for new comments
       run: |
         COMMENT_BODY="${{ github.event.comment.body }}"
