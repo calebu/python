@@ -2,8 +2,9 @@
 # Play with json module
 # Writes json to an output file tester.txt
 
-import sys, json, logger
+import sys, json, logging
 
+logger = logging.getLogger(__name__)
 print (len(sys.argv))
 print (f"From python code: {sys.argv[1]}")
 if len(sys.argv) > 1 and sys.argv[1] == 'sample':
@@ -29,4 +30,5 @@ print(obj)
 logger.info(f"{test}")
 logger.info(f"{test}")
 logger.info(f"{test}")
+
 
