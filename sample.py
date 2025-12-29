@@ -2,7 +2,7 @@
 # Play with json module
 # Writes json to an output file tester.txt
 
-import sys, json
+import sys, json, logger
 
 print (len(sys.argv))
 print (f"From python code: {sys.argv[1]}")
