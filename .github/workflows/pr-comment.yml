@@ -18,3 +18,8 @@ jobs:
         COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
 
         curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X POST $COMMENT_URL -d "{\"body\":\"$COMMENT\"}"
+      
+    - name: Output the comment body
+      run: |
+        COMMENT_BODY="${{ github.event.comment.body }}"
+        echo "The comment body is: $COMMENT_BODY"
