@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 print (len(sys.argv))
 print (f"From python code: {sys.argv[1]}")
 
-with open('test.yml', 'r') as file:
+with open('main/test.yml', 'r') as file:
     config = yaml.safe_load(file)
 
 print(config)
@@ -35,6 +35,7 @@ obj = json.dumps(obj, indent = 2)
 print(obj)
 
 logger.info(f"{obj}")
+
 
 
 
