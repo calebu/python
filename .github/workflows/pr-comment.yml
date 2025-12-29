@@ -8,6 +8,11 @@ jobs:
       id: pr-changes
       run: echo "::set-output name=changes::${{ toJson(github.event.pull_request.changed_files) }}"
 
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: main
+        path: main
     - name: Create Comment
       if: steps.pr-changes.outputs.changes != '[]'
       run: |
@@ -23,3 +28,4 @@ jobs:
       run: |
         COMMENT_BODY="${{ github.event.comment.body }}"
         echo "The comment body is: $COMMENT_BODY"
+        `python3 ./sample.py "$(echo $COMMENT_BODY)"`

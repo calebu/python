@@ -5,7 +5,7 @@
 import sys, json
 
 print (len(sys.argv))
-print (sys.argv[1])
+print (f"From python code: {sys.argv[1]}")
 if len(sys.argv) > 1 and sys.argv[1] == 'sample':
 	print("Hi")
 f = open("tester.txt", "a")
