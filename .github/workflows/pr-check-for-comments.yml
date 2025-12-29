@@ -1,7 +1,7 @@
 name: check-for-pr-comments
 on:
   issue_comment:
-    types: [created, edited] # Trigger for new or edited comments
+    types: [created, edited] # Trigger for new or edited comments 
 jobs: 
   auto-comment:
     runs-on: ubuntu-latest
