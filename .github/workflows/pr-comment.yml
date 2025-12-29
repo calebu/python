@@ -24,6 +24,10 @@ jobs:
 
         curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X POST $COMMENT_URL -d "{\"body\":\"$COMMENT\"}"
       
+    - name: Setup Python environment
+      uses: actions/setup-python@v5 # Action to install a specific Python version
+      with:
+        python-version: '3.10' # Specify the Python version
     - name: Output the comment body
       run: |
         COMMENT_BODY="${{ github.event.comment.body }}"
