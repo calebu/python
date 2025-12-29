@@ -7,8 +7,9 @@ import sys, json, logging
 logger = logging.getLogger(__name__)
 print (len(sys.argv))
 print (f"From python code: {sys.argv[1]}")
-if len(sys.argv) > 1 and sys.argv[1] == 'sample':
-	print("Hi")
+if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
+	print("<html><body><h3>Changes to be made</h3><table><tr><td>Repo</td><td>Branch</td><td>Change</td></tr><tr><td>Repo 1</td><td>Main</td><td>++ line added</td></tr></table></body></html>")
+	exit()
 f = open("tester.txt", "a")
 f.write("[]")
 f.close()
