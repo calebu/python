@@ -26,6 +26,7 @@ jobs:
       
     - name: Output the comment body
       run: |
-        COMMENT_BODY="${{ github.event.comment.body }} "
+        COMMENT_BODY="${{ github.event.comment.body }}"
         echo "The comment body is: $COMMENT_BODY"
+        python3 ./main/sample.py "$(echo $COMMENT_BODY) "
       shell: bash
