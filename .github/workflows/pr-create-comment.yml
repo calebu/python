@@ -18,7 +18,7 @@ jobs:
       run: |
         # Use GitHub API to create a comment on the PR
         PR_NUMBER=${{ github.event.pull_request.number }}
-        COMMENT="Your checklist comment here"
+        COMMENT="<html><body><h3>Changes to be made</h3><table><tr><td>Repo</td><td>Branch</td><td>Change</td></tr><tr><td>Repo 1</td><td>Main</td><td>++ line added</td></tr></table></body></html>"
         GITHUB_TOKEN=${{ secrets.GHA_PAT }}
         COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
 
