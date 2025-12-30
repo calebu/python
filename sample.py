@@ -6,13 +6,17 @@ import sys, json, logging, yaml
 
 logger = logging.getLogger(__name__)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
-    my_string = """
+    config = ''
+    with open('main/test.yml', 'r') as file:
+        config = yaml.safe_load(file)
+
+    my_string = f"""
 <html>
 	<body>
  		<h3>Changes to be made</h3>
    		<table>
      		<tr><td>Repo</td><td>Branch</td><td>Change</td></tr>
-       		<tr><td>Main Repo</td><td>Main</td><td><ul><li>++ line added<li>-- line removed</ul></td></tr>
+       		<tr><td>Main Repo</td><td>Main</td><td><ul><li>++ line added<li>-- line removed {config}</ul></td></tr>
          </table>
     </body>
 </html>
