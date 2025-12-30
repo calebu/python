@@ -10,7 +10,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     with open('main/test.yml', 'r') as file:
         config = yaml.safe_load(file)
 
-    my_string = f"""
+    repo_check = f"""
 <html>
 	<body>
  		<h3>Changes to be made</h3>
@@ -21,7 +21,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     </body>
 </html>
 """
-    print(my_string)
+    print(" ".join(repo_check.split()))
     exit()
 #print (len(sys.argv[1]))
 #print (f"From python code: {sys.argv[1]}")
