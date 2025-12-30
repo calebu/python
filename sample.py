@@ -10,17 +10,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     with open('main/test.yml', 'r') as file:
         config = yaml.safe_load(file)
 
-    repo_check = f"""
-<html>
-	<body>
- 		<h3>Changes to be made</h3>
-   		<table>
-     		<tr><td>Repo</td><td>Branch</td><td>Change</td></tr>
-       		<tr><td>Main Repo</td><td>Main</td><td><ul><li>++ line added<li>-- line removed {config}</ul></td></tr>
-         </table>
-    </body>
-</html>
-"""
+    repo_check = "<html><body><h3>Changes to be made</h3><table><tr><td>Repo</td><td>Branch</td><td>Change</td></tr><tr><td>Main Repo</td><td>Main</td><td><ul><li>++ line added<li>-- line removed</ul></td></tr></table></body></html>"
     print(" ".join(repo_check.split()))
     exit()
 #print (len(sys.argv[1]))
