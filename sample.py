@@ -21,7 +21,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     </body>
 </html>
 """
-    print(repo_check)
+    print(" ".join(repo_check.split()))
     exit()
 #print (len(sys.argv[1]))
 #print (f"From python code: {sys.argv[1]}")
