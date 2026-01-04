@@ -3,7 +3,20 @@
 # Writes json to an output file tester.txt
 
 import sys, json, logging, yaml
+import pandas as pd
 
+# Define a simple dictionary of data
+data = {
+    'Greeting': ["Hello", "World"],
+    'ID': [1, 2]
+}
+
+# Create a DataFrame
+# Pandas is usually imported under the 'pd' alias
+df = pd.DataFrame(data)
+
+# Print the DataFrame
+print(df)
 logger = logging.getLogger(__name__)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
     config = ''
@@ -47,6 +60,7 @@ obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
+
 
 
 
