@@ -11,8 +11,3 @@ jobs:
       with:
         ref: main
         path: main
-    - name: Check for new comments
-      run: |
-        COMMENT_BODY="${{ github.event.comment.body }}"
-        echo "The comment body is: $COMMENT_BODY"
-      shell: bash
