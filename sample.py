@@ -48,5 +48,21 @@ obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
 
+import pandas as pd
+
+# Define a simple dictionary of data
+data = {
+    'Greeting': ["Hello", "World"],
+    'ID': [1, 2]
+}
+
+# Create a DataFrame
+# Pandas is usually imported under the 'pd' alias
+df = pd.DataFrame(data)
+
+# Print the DataFrame
+print(df)
+
+
 
 
