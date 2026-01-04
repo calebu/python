@@ -19,7 +19,7 @@ df = pd.DataFrame(data)
 print(df)
 logger = logging.getLogger(__name__)
 if len(sys.argv) > 1 and sys.argv[1] == 'check-changes':
-    config = ''
+    config = '.'
     with open('main/test.yml', 'r') as file:
         config = yaml.safe_load(file)
 
@@ -60,6 +60,7 @@ obj.append(dict)
 obj = json.dumps(obj, indent = 2)
 
 logger.info(f"{obj}")
+
 
 
 
