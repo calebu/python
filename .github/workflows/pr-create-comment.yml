@@ -13,6 +13,8 @@ jobs:
       with:
         ref: main
         path: main
+    - name: Install local package
+      run: pip install pandas
     - name: Create Comment
       if: steps.pr-changes.outputs.changes != '[]'
       run: |
