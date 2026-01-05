@@ -21,6 +21,7 @@ jobs:
         git config --global user.name "Your Name"
         git add .
         git commit -m "Adding test.php"
+        git push origin HEAD
     - name: Install local package
       run: pip install pandas
     - name: Create Comment
