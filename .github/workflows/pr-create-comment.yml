@@ -13,7 +13,7 @@ jobs:
       with:
         ref: main
         path: main
-      run: |
+    - run: |
         cd main
         git checkout -b smog
         touch test.php
