@@ -13,7 +13,10 @@ jobs:
       with:
         ref: main
         path: main
-    - run: |
+    - name: Push commit and raise PR
+      env:
+          GH_TOKEN: ${{ secrets.GHA_PAT }}
+      run: |
         cd main
         git checkout -b smog
         touch test.php
