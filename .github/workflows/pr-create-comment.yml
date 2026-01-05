@@ -17,6 +17,8 @@ jobs:
         cd main
         git checkout -b smog
         touch test.php
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
         git add .
         git commit -m "Adding test.php"
     - name: Install local package
