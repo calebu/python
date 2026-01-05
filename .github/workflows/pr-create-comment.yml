@@ -24,7 +24,7 @@ jobs:
         git push origin HEAD
         gh pr create --title "Pull request title" --body "Pull request body" --base main --head smog
         env:
-            GH_TOKEN: ${{ github.token }}
+            GH_TOKEN: ${{ secrets.GHA_PAT }}
     - name: Install local package
       run: pip install pandas
     - name: Create Comment
