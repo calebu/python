@@ -6,14 +6,28 @@ import sys
 repo_url = "https://github.com/gitpython-developers/QuickStartTutorialFiles.git"
 local_dir = "./cloned_repo" # The local directory to clone into
 
-print(sys.argv[1].splitlines())
-for gg in sys.argv[1].splitlines():
-    print(f"{gg}: {gg.split(':')}")
-
-# Use clone_from to clone the repository
-try:
-    repo = git.Repo.clone_from(repo_url, local_dir)
-    print(f"Repository successfully cloned to {os.path.abspath(local_dir)}")
-except git.exc.GitCommandError as e:
-    print(f"Error during cloning: {e}")
-
+comments = sys.argv[1].splitlines()
+for comment_line in comments:
+  if 'action' in comment_line:
+    action = comment_line.split(':')
+    if action[1] == 'test':
+      print("testing")
+    else:
+      print("Enter a valid action")
+      exit()
+  elif 'source' in comment_line:
+    source = comment_line.split(':')
+    try:
+      repo = git.Repo.clone_from('https://github.com/calebu_/' + source[1], source[1])
+      print(f"Repository successfully cloned to {os.path.abspath(source[1])}")
+    except Exception as clone_exc:
+      print(f"Unable to clone source {source[1]}")
+      exit()
+  elif 'target' in comment_line:
+    target = comment_line.split(':')
+    try:
+      repo = git.Repo.clone_from('https://github.com/calebu_/' + target[1], target[1])
+      print(f"Repository successfully cloned to {os.path.abspath(target[1])}")
+    except Exception as clone_exc:
+      print(f"Unable to clone source {target[1]}")
+      exit()
