@@ -6,7 +6,7 @@ import sys
 repo_url = "https://github.com/gitpython-developers/QuickStartTutorialFiles.git"
 local_dir = "./cloned_repo" # The local directory to clone into
 
-print(sys.argv)
+print(sys.argv.strip())
 
 # Use clone_from to clone the repository
 try:
