@@ -15,7 +15,7 @@ for comment_line in comments:
     source = comment_line.split(':')
     source[1] = source[1].strip()
     try:
-      repo = git.Repo.clone_from('https://github.com/calebu_/' + source[1], source[1])
+      repo = git.Repo.clone_from(f'https://calebu:{sys.argv[1]}@github.com/calebu/' + source[1], source[1])
       print(f"Repository successfully cloned to {os.path.abspath(source[1])}")
     except Exception as clone_exc:
       print(f"Unable to clone source repo: {clone_exc}")
@@ -24,7 +24,7 @@ for comment_line in comments:
     target = comment_line.split(':')
     target[1] = target[1].strip()
     try:
-      repo = git.Repo.clone_from('https://github.com/calebu_/' + target[1], target[1])
+      repo = git.Repo.clone_from(f'https://calebu:{sys.argv[1]}@github.com/calebu/' + target[1], target[1])
       print(f"Repository successfully cloned to {os.path.abspath(target[1])}")
     except Exception as clone_exc:
       print(f"Unable to clone source repo: {clone_exc}")
