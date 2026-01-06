@@ -11,7 +11,7 @@ for comment_line in comments:
   if 'action' in comment_line:
     action = comment_line.split(':')
     if action[1] == 'test':
-      print("testing")
+      pass
     else:
       print("Enter a valid action")
       exit()
