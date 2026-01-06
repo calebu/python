@@ -17,7 +17,8 @@ jobs:
       env:
           GH_TOKEN: ${{ secrets.GHA_PAT }}
       run: |
-        cd main
+        cp -r main main_smog
+        cd main_smog
         git checkout -b smog
         touch test.php
         git config --global user.email "you@example.com"
