@@ -8,7 +8,7 @@ local_dir = "./cloned_repo" # The local directory to clone into
 
 print(sys.argv[1].splitlines())
 for gg in sys.argv[1].splitlines():
-    print(f'{gg}: {gg.split(':')})
+    print(f"{gg}: {gg.split(':')}")
 
 # Use clone_from to clone the repository
 try:
