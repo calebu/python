@@ -17,6 +17,7 @@ for comment_line in comments:
       exit()
   elif 'source' in comment_line:
     source = comment_line.split(':')
+    source[1] = source[1].strip()
     try:
       repo = git.Repo.clone_from('https://github.com/calebu_/' + source[1], source[1])
       print(f"Repository successfully cloned to {os.path.abspath(source[1])}")
@@ -25,6 +26,7 @@ for comment_line in comments:
       exit()
   elif 'target' in comment_line:
     target = comment_line.split(':')
+    target[1] = target[1].strip()
     try:
       repo = git.Repo.clone_from('https://github.com/calebu_/' + target[1], target[1])
       print(f"Repository successfully cloned to {os.path.abspath(target[1])}")
