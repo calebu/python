@@ -6,8 +6,15 @@ jobs:
   check-for-comments:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      name: Checkout current commit
+      with:
+        ref: main
+        path: main
+    - name: Install GitPython package
+      run: pip install gitpython
     - name: Check for comments
       run: |
-        COMMENT_BODY="${{ github.event.comment.body }}"
-        echo "The comment body is: $COMMENT_BODY"
+        CLONE_RESULT="$(python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}')"
+        echo $CLONE_RESULT
       shell: bash

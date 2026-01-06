@@ -1,24 +1,17 @@
-import re
-import glob
+import git
 import os
-from datetime import datetime
-from dateutil import relativedelta
+import sys
 
-# Scratchpad
-# Some python code to pick out date patterns from files in a directory, and tell the time difference between current date and the filename's date
+# Define the repository URL and the local destination path
+repo_url = "https://github.com/gitpython-developers/QuickStartTutorialFiles.git"
+local_dir = "./cloned_repo" # The local directory to clone into
 
-for name in glob.glob('sample_files/*'):
-  try:
-    r1 = re.findall("\d{4}-\d{2}-\d{2}", name)
-    first_date_match = r1[0]
-    file_date_obj = datetime.strptime(first_date_match, '%Y-%m-%d')
-    now = datetime.now()
-    
-    delta = relativedelta.relativedelta(now, file_date_obj)
-    print(name + '   ' + first_date_match + str(delta.years))
+print(sys.argv)
 
-  except Exception as expn:
-    print(expn)
-    pass
-  
-  
+# Use clone_from to clone the repository
+try:
+    repo = git.Repo.clone_from(repo_url, local_dir)
+    print(f"Repository successfully cloned to {os.path.abspath(local_dir)}")
+except git.exc.GitCommandError as e:
+    print(f"Error during cloning: {e}")
+
