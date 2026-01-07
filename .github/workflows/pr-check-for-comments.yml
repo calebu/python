@@ -12,10 +12,10 @@ jobs:
         ref: calebu-patch-1
         path: main
     - name: Install GitPython package
-      if: github.head_ref == 'sync'
+      if: github.ref == 'refs/heads/sync'
       run: pip install gitpython
     - name: Check for comments
-      if: github.head_ref == 'sync'
+      if: github.ref == 'refs/heads/sync'
       run: |
 	  	COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
         python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}' '$COMMENT_URL'
