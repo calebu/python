@@ -12,5 +12,4 @@ jobs:
         ref: calebu-patch-1
         path: main
     - name: Install GitPython package
-      if: github.ref == 'refs/heads/sync'
       run: echo '${{ toJSON(github.event) }}'
