@@ -11,5 +11,3 @@ jobs:
       with:
         ref: calebu-patch-1
         path: main
-    - name: Install GitPython package
-      run: echo '${{ toJSON(github.event) }}'
