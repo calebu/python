@@ -11,8 +11,8 @@ jobs:
         PR_NUMBER=${{ github.event.pull_request.number }}
         #COMMENT="$(python3 ./main/sample.py check-changes)"
         COMMENT="<html><body><h4>Repo sync tool</h4>To use the sync tool, add a comment in the format below.<br><pre>\
-        action:sync\
-        source:a_source\
+        action:sync<br>\
+        source:a_source>br>\
         target:a_target\
         </pre></body></html>"
         GITHUB_TOKEN=${{ secrets.GHA_PAT }}
