@@ -15,6 +15,5 @@ jobs:
       run: echo echo '${{ toJSON(github.event) }}' && pip install gitpython
     - name: Check for comments
       id: check-for-comments
-      run: |
-	  	echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
+      run: echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
       shell: bash
