@@ -19,4 +19,4 @@ for comment_line in comments:
       repo = git.Repo.clone_from(f'https://calebu:{sys.argv[2]}@github.com/calebu/' + target[1], target[1])
       print(f"Repository successfully cloned to {os.path.abspath(target[1])}")
     except Exception as clone_exc:
-      print(f"Unable to clone source repo: {clone_exc}")
+      print(f"Unable to clone source repo: {clone_exc}") 
