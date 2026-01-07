@@ -14,7 +14,7 @@ jobs:
     - name: Install GitPython package
       run: echo echo '${{ toJSON(github.event) }}' && pip install gitpython
     - name: Check for comments
+      id: check-for-comments
       run: |
-	  	COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
-        python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}' '$COMMENT_URL'
+	  	echo '${{ github.ref }}' && echo '${{ github.head_ref }}'
       shell: bash
