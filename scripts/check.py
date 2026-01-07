@@ -6,7 +6,7 @@ comments = sys.argv[1].splitlines()
 for comment_line in comments:
   if 'action' in comment_line:
     action = comment_line.split(':')
-    if action[1] == 'test':
+    if action[1] == 'sync':
       pass
     else:
       print("Enter a valid action")
