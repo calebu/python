@@ -12,7 +12,7 @@ jobs:
         #COMMENT="$(python3 ./main/sample.py check-changes)"
         COMMENT="<html><body><h4>Repo sync tool</h4>To use the sync tool, add a comment in the format below.<br><pre>\
         action:sync<br>\
-        source:a_source>br>\
+        source:a_source<br>\
         target:a_target\
         </pre></body></html>"
         GITHUB_TOKEN=${{ secrets.GHA_PAT }}
