@@ -15,5 +15,5 @@ jobs:
       if: github.head_ref == 'sync'
       run: pip install gitpython
     - name: Check for comments
-      run: echo "Hello World!"
+      run: echo "Hello World"
       shell: bash
