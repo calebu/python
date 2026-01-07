@@ -17,11 +17,6 @@ jobs:
     - name: Check for comments
       if: github.head_ref == 'sync'
       run: |
-        COMMENT="$(python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}')"
-        if [[ "$COMMENT" != "" ]]; then
-					PR_NUMBER=${{ github.event.pull_request.number }}
-					GITHUB_TOKEN=${{ secrets.GHA_PAT }}
-					COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
-					curl -s -H "Authorization: token ${GITHUB_TOKEN}" -X POST $COMMENT_URL -d "{\"body\":\"$COMMENT\"}"
-        fi
+	  	COMMENT_URL="https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
+        python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}' '$COMMENT_URL'
       shell: bash
