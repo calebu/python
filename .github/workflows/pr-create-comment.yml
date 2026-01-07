@@ -7,5 +7,5 @@ jobs:
     - name: Check source branch
       id: check-source-branch
       run: |
-        echo "${{ github.ref }}"
+        echo "${{ github.head_ref }}"
       
