@@ -21,7 +21,6 @@ def post_comment(comment):
   except Exception as e:
     print(e)
   
-
 comments = sys.argv[1].splitlines()
 for comment_line in comments:
   if 'source' in comment_line:
