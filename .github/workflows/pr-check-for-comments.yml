@@ -13,7 +13,7 @@ jobs:
         path: main
     - name: Install GitPython package
       if: github.ref == 'refs/heads/sync'
-      run: pip install gitpython
+      run: echo "Event payload: ${{ toJSON(github.event) }}"
     - name: Check for comments
       if: github.ref == 'refs/heads/sync'
       run: |
