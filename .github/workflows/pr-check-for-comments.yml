@@ -18,5 +18,5 @@ jobs:
       if: github.head_ref == 'sync'
       run: |
         CLONE_RESULT="$(python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}')"
-        echo $CLONE_RESULT
+        if [[ "$CLONE_RESULT" != "" ]]; then echo $CLONE_RESULT; fi
       shell: bash
