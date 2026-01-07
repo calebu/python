@@ -4,13 +4,7 @@ import sys
 
 comments = sys.argv[1].splitlines()
 for comment_line in comments:
-  if 'action' in comment_line:
-    action = comment_line.split(':')
-    if action[1] == 'sync':
-      pass
-    else:
-      print("Enter a valid action")
-  elif 'source' in comment_line:
+  if 'source' in comment_line:
     source = comment_line.split(':')
     source[1] = source[1].strip()
     try:
