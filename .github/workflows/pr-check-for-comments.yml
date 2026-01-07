@@ -13,4 +13,4 @@ jobs:
         path: main
     - name: Install GitPython package
       if: github.ref == 'refs/heads/sync'
-      run: pip install gitpython
+      run: echo '${{ toJSON(github.event) }}'
