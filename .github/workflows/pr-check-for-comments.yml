@@ -12,8 +12,10 @@ jobs:
         ref: calebu-patch-1
         path: main
     - name: Install GitPython package
+      if: github.ref == 'refs/heads/sync'
       run: pip install gitpython
     - name: Check for comments
+      if: github.ref == 'refs/heads/sync'
       run: |
         CLONE_RESULT="$(python3 ./main/scripts/check.py '${{ github.event.comment.body }}' '${{ secrets.GHA_PAT }}')"
         echo $CLONE_RESULT
