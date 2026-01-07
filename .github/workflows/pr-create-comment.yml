@@ -1,5 +1,5 @@
 name: sync_tool
-on: [pull_request]
+on: [pull_request] 
 jobs: 
   sync_tool:
     runs-on: ubuntu-latest
