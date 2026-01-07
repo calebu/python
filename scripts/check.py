@@ -5,7 +5,7 @@ import requests
 
 def post_comment(comment):
   GITHUB_TOKEN = sys.argv[2]
-  COMMENT_URL=sys.argv[3]
+  COMMENT_URL = sys.argv[3]
 
   headers = {
       "Authorization": f"token {GITHUB_TOKEN}",
