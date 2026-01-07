@@ -4,6 +4,10 @@ jobs:
   sync_tool:
     runs-on: ubuntu-latest
     steps:
+    - name: ffCheck source branch
+      id: ffcheck-source-branch
+      run: |
+        echo "Event payload: ${{ toJSON(github.event) }}"
     - name: Check source branch
       id: check-source-branch
       if: github.head_ref == 'sync'
