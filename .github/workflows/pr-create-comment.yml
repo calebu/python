@@ -9,7 +9,7 @@ jobs:
       run: echo "::set-output name=changes::${{ toJson(github.event.pull_request.changed_files) }}"
 
     - uses: actions/checkout@v2
-      name: Checkout current commit
+      name: Checkout current commit 
       with:
         ref: main
         path: main
