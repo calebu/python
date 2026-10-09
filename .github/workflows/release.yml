@@ -1,0 +1,96 @@
+name: Release selected module
+
+'on':
+  workflow_dispatch:
+    inputs:
+      module:
+        description: Module to release. Must exist in modules.txt.
+        required: true
+        type: string
+      tags:
+        description: Comma-separated release tags. Must all exist in tags.txt.
+        required: true
+        type: string
+
+jobs:
+  validate-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Read allowed modules and tags
+        id: allowed
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "modules<<EOF" >> "$GITHUB_OUTPUT"
+          cat modules.txt >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+          echo "tags<<EOF" >> "$GITHUB_OUTPUT"
+          cat tags.txt >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate selected module and tags
+        shell: bash
+        env:
+          SELECTED_MODULE: ${{ github.event.inputs.module }}
+          SELECTED_TAGS: ${{ github.event.inputs.tags }}
+          ALLOWED_MODULES: ${{ steps.allowed.outputs.modules }}
+          ALLOWED_TAGS: ${{ steps.allowed.outputs.tags }}
+        run: |
+          python - <<'PY'
+          import os
+          import sys
+
+          selected_module = os.environ["SELECTED_MODULE"].strip()
+          selected_tags = [tag.strip() for tag in os.environ["SELECTED_TAGS"].split(",") if tag.strip()]
+
+          allowed_modules = [
+              line.strip()
+              for line in os.environ["ALLOWED_MODULES"].splitlines()
+              if line.strip() and not line.strip().startswith("#")
+          ]
+          allowed_tags = [
+              line.strip()
+              for line in os.environ["ALLOWED_TAGS"].splitlines()
+              if line.strip() and not line.strip().startswith("#")
+          ]
+
+          if not selected_module:
+              raise SystemExit("A module must be provided.")
+
+          if selected_module not in allowed_modules:
+              raise SystemExit(
+                  f"Module '{selected_module}' is not found in modules.txt. Allowed modules: {allowed_modules}"
+              )
+
+          missing = [tag for tag in selected_tags if tag not in allowed_tags]
+          if missing:
+              raise SystemExit(
+                  f"Tag(s) not found in tags.txt: {missing}. Allowed tags: {allowed_tags}"
+              )
+
+          print(f"Selected module: {selected_module}")
+          print(f"Selected tags: {selected_tags}")
+          PY
+
+      - name: Release selected module and tags
+        shell: bash
+        env:
+          SELECTED_MODULE: ${{ github.event.inputs.module }}
+          SELECTED_TAGS: ${{ github.event.inputs.tags }}
+        run: |
+          set -euo pipefail
+
+          echo "Starting release for module: ${SELECTED_MODULE}"
+
+          IFS=',' read -r -a tags <<< "${SELECTED_TAGS}"
+          for tag in "${tags[@]}"; do
+            clean_tag="$(echo "$tag" | xargs)"
+            echo "Release tag: ${clean_tag}"
+          done
+
+          echo "Release completed for module: ${SELECTED_MODULE}"
